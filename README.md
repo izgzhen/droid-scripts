@@ -3,21 +3,38 @@ Droid Scripts
 
 Executable scripts for helping with Android related work.
 
-- `python debug-sign.py <input-apk-path> <output-apk-path>`
-  - Make an APK debuggable
-- `baksmali`/`smali` version: 2.4.0
-  + https://github.com/JesusFreke/smali/
-- `apktool` version: 2.4.1
-  + https://ibotpeaches.github.io/Apktool/
-- `pkg-classes path/to/apk path/to/txt`:
-  + Dump classes in `apk` to `txt`
-
 Most of them are either wrappers of existing third-party tool's released jars or
 Android SDK tools' executables e.g. `adb` (inside `path/to/sdk/platform-tools`),
 `aapt` (inside `path/to/sdk/build-tools/<version>`).
 
 NOTE: Install build tools
 `path/to/sdk/tools/bin/sdkmanager 'build-tools;29.0.3'`
+
+
+## Make an APK debuggable
+- `python debug-sign.py <input-apk-path> <output-apk-path>`
+
+## Decompile APK to Smali code
+
+```
+baksmali d path/to/apk -o path/to/output/dir
+```
+
+Version: 2.4.0, from https://github.com/JesusFreke/smali/ (also include `smali`)
+
+## Decompile APK to Smali and other resources
+
+```
+apktool d path/to/apk -o path/to/output/dir
+```
+
+Version: 2.4.1, from https://ibotpeaches.github.io/Apktool/
+
+## Dump classes list
+
+```
+pkg-classes path/to/apk path/to/txt
+```
 
 ## Check the view hierarchy of APK dynamically
 
