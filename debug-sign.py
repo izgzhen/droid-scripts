@@ -14,8 +14,8 @@ tmp_dir = tempfile.TemporaryDirectory().name
 # Use apktool to add the debug sign
 # NOTE: use -r flag skips resource decoding, which avoids a lot of decoding
 #       exceptions
-run(f"./apktool/apktool d -f {APK} -o {tmp_dir}")
-run(f"./apktool/apktool b -d {tmp_dir} -o {temp_file}")
+run(f"./apktool d -f {APK} -o {tmp_dir}")
+run(f"./apktool b -d {tmp_dir} -o {temp_file}")
 
 # re-sign  the APK
 run(f"java -jar sign.jar {temp_file}")
