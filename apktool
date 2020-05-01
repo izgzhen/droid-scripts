@@ -1,0 +1,10 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+FRAMEWORK=$HOME/.apktoo/framework
+
+# clean and recreate each time to avoid problems
+rm -rf $FRAMEWORK
+mkdir -p $FRAMEWORK
+
+java -jar $DIR/lib/apktool_2.4.1.jar -p $FRAMEWORK $@

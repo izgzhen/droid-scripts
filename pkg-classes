@@ -17,7 +17,7 @@ if os.path.exists(OUT_TXT):
 
 tmp_dir = tempfile.TemporaryDirectory().name
 
-run(f"./apktool/apktool d -f {APK} -o {tmp_dir}")
+run(f"./apktool d -f {APK} -o {tmp_dir}")
 
 classes = []
 for f in glob.glob(tmp_dir + "/**/*.smali", recursive=True):
