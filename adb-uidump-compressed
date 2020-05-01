@@ -1,0 +1,4 @@
+#!/bin/bash
+
+adb shell uiautomator dump --compressed
+adb pull /sdcard/window_dump.xml $1
