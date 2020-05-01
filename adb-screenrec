@@ -1,0 +1,14 @@
+#!/bin/bash
+set -x
+
+mydir=`mktemp -d`
+
+# set up a trap to interrupt only sub-process
+trap "kill -2 $pid1 $pid2" SIGINT
+
+adb shell screenrecord /sdcard/test.mp4
+echo "waiting screenrecord to exit..."
+sleep 1
+adb pull /sdcard/test.mp4 $mydir/rec.mp4
+gifify $mydir/rec.mp4 --fps 5 --resize '400:-1'  -o $1
+ls -alh $1
