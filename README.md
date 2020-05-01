@@ -3,6 +3,8 @@ Droid Scripts
 
 Executable scripts for helping with Android related work.
 
+- `python debug-sign.py <input-apk-path> <output-apk-path>`
+  - Make an APK debuggable
 - `baksmali`/`smali` version: 2.4.0
   + https://github.com/JesusFreke/smali/
 - `apktool` version: 2.4.1
