@@ -55,7 +55,7 @@ pkg-classes path/to/apk path/to/txt
 
 ## Copy back APK installed on phone
 
-```
+```bash
 adb shell pm list packages # find the package name from the output
 adb shell pm path <package-name> # outputs <target-apk-path>
 adb pull <target-apk-path> <apk-output>
