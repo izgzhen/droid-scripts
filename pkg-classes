@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+import os
+import glob
+import sys
+import tempfile
+
+def run(cmd):
+    print(cmd)
+    os.system(cmd)
+
+APK = sys.argv[1]
+OUT_TXT = sys.argv[2]
+
+if os.path.exists(OUT_TXT):
+    print("Exists " + OUT_TXT)
+    exit(0)
+
+tmp_dir = tempfile.TemporaryDirectory().name
+
+run(f"./apktool/apktool d -f {APK} -o {tmp_dir}")
+
+classes = []
+for f in glob.glob(tmp_dir + "/**/*.smali", recursive=True):
+    assert f.startswith(tmp_dir)
+    f = f[len(tmp_dir):].strip("/")
+    smali_dirname = f.split("/")[0]
+    assert smali_dirname == "smali" or smali_dirname.startswith("smali_classes")
+    f = f[len(smali_dirname) + 1:]
+    f = f.replace(".smali", "").replace("/", ".")
+    classes.append(f)
+
+with open(OUT_TXT, "w") as outfile:
+    outfile.write("\n".join(classes))
+
+os.system(f"rm -rf {tmp_dir}")
