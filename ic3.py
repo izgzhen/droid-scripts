@@ -32,10 +32,13 @@ if os.path.exists(IC3_OUTPUT):
     exit(0)
 
 os.chdir(SCRIPT_DIR)
-run_cmd(f"./dare.py {APK} {SHA256SUM}")
+INPUT_CLASSES = f"{OUTPUT}/dare/{SHA256SUM}/retargeted/{APK_NAME}/"
+
+if not os.path.isdir(INPUT_CLASSES):
+    run_cmd(f"./dare.py {APK} {SHA256SUM}")
 run_cmd(f"mkdir -p {IC3_OUTPUT_DIR}")
 run_cmd(f"java -jar {SCRIPT_DIR}/ic3-0.2.0/ic3-0.2.0-full.jar " +
-    f"-input {OUTPUT}/dare/{SHA256SUM}/retargeted/{APK_NAME}/ " +
+    f"-input {INPUT_CLASSES} " +
     f"-apkormanifest {APK} -cp {ANDROID_JAR} -protobuf {IC3_OUTPUT_DIR}")
 
 os.system("cp " + IC3_OUTPUT + " " + PROTOBUF_OUT)
