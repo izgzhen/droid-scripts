@@ -3,6 +3,9 @@
 import sys
 import os
 
+SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
+assert os.getcwd() == SCRIPT_DIR
+
 WORKDIR = "/usr/src/tools"
 APK = sys.argv[1]
 assert APK.startswith("apks/")

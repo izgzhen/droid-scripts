@@ -10,7 +10,6 @@ Android SDK tools' executables e.g. `adb` (inside `path/to/sdk/platform-tools`),
 NOTE: Install build tools
 `path/to/sdk/tools/bin/sdkmanager 'build-tools;29.0.3'`
 
-
 ## Make an APK debuggable
 - `python debug-sign.py <input-apk-path> <output-apk-path>`
 
@@ -69,7 +68,7 @@ adb install path/to/apk
 
 ## Retargeting Dex to Java Classes
 
-Build the Docker image with `make` first.
+NOTE: Build the Docker image with `make` first
 
 Make sure your APK file (not symbolic link) is under `apks` in this directory.
 
@@ -77,4 +76,14 @@ Make sure your APK file (not symbolic link) is under `apks` in this directory.
 ./dare.py apks/example.apk
 ```
 
-Then you can find outputs in `output/dare/`
+Then you can find (Java classes) outputs in `output/dare/`
+
+## Inter-Component Communication (ICC) analysis
+
+Make sure your APK file (symbolic link or anything) is under `apks` in this directory.
+
+```
+./ic3.py apks/example.apk
+```
+
+Then you can find (text-format Protobuf) outputs in `output/ic3`
