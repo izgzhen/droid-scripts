@@ -7,9 +7,9 @@ SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 assert os.getcwd() == SCRIPT_DIR
 
 WORKDIR = "/usr/src/tools"
-APK = sys.argv[1]
+APK = os.path.relpath(sys.argv[1])
 SHA256SUM = sys.argv[2]
-assert APK.startswith("apks/")
+assert APK.startswith("apks/"), APK
 APKNAME = os.path.basename(APK)
 PWD = os.getcwd()
 

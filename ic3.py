@@ -3,13 +3,17 @@
 import sys
 import os
 
-APK = sys.argv[1]
+SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
+
+APK = os.path.realpath(sys.argv[1])
+
+os.system("cp " + APK + " " + SCRIPT_DIR + "/apks")
+APK = SCRIPT_DIR + "/apks/" + os.path.basename(APK)
+
 APK_NAME = os.path.basename(APK).replace(".apk", "")
 SHA256SUM = sys.argv[2]
 PKG_NAME = sys.argv[3]
 PROTOBUF_OUT = sys.argv[4]
-
-SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 
 ANDROID_SDK = os.getenv("ANDROID_SDK")
 ANDROID_JAR = ANDROID_SDK + "/platforms/android-23/android.jar"
@@ -20,9 +24,10 @@ IC3_OUTPUT = IC3_OUTPUT_DIR + "/" + PKG_NAME + "_5.txt" # 5 is the version
 
 def run_cmd(cmd):
     print(cmd)
-    os.system(cmd)
+    assert os.system(cmd) == 0
 
 if os.path.exists(IC3_OUTPUT):
+    print("Exists " + IC3_OUTPUT)
     os.system("cp " + IC3_OUTPUT + " " + PROTOBUF_OUT)
     exit(0)
 
