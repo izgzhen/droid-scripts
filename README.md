@@ -73,19 +73,19 @@ NOTE: Build the Docker image with `make` first
 Make sure your APK file (not symbolic link) is under `apks` in this directory.
 
 ```
-./dare.py apks/example.apk
+./dare.py apks/example.apk <sha256sum>
 ```
 
 Then you can find (Java classes) outputs in `output/dare/`
 
 ## Inter-Component Communication (ICC) analysis
 
-NOTE: this depends on "Dare" introduced above
-
-Make sure your APK file (symbolic link or anything) is under `apks` in this directory.
+NOTE: this depends on "Dare" introduced above.
+Also, you should set env var `ANDROID_SDK` to the Android SDK directory, such that
+the tool can find `$ANDROID_SDK/platforms/android-23/android.jar`.
 
 ```
-./ic3.py apks/example.apk
+path/to/ic3.py <sha256sum> <apk-package-name> path/to/example.apk path/to/output.txt
 ```
 
-Then you can find (text-format Protobuf) outputs in `output/ic3`
+Then you can find (text-format Protobuf) output at `path/to/output.txt`
