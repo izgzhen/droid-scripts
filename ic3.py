@@ -2,6 +2,7 @@
 
 import sys
 import os
+import glob
 
 SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 
@@ -21,22 +22,21 @@ ANDROID_JAR = ANDROID_SDK + "/platforms/android-23/android.jar"
 
 OUTPUT = SCRIPT_DIR + "/output"
 IC3_OUTPUT_DIR = OUTPUT + "/ic3/" + SHA256SUM
-IC3_OUTPUT = IC3_OUTPUT_DIR + "/" + PKG_NAME + "_5.txt" # 5 is the version
 
 def run_cmd(cmd):
     print(cmd)
     assert os.system(cmd) == 0
 
-if os.path.exists(IC3_OUTPUT):
-    print("Exists " + IC3_OUTPUT)
-    os.system("cp " + IC3_OUTPUT + " " + PROTOBUF_OUT)
-    exit(0)
+OUTPUT_PATTERN = IC3_OUTPUT_DIR + "/" + PKG_NAME + "*.txt"
 
-os.chdir(SCRIPT_DIR)
+if len(glob.glob(OUTPUT_PATTERN)) == 0:
+    os.chdir(SCRIPT_DIR)
+    run_cmd(f"mkdir -p {IC3_OUTPUT_DIR}")
+    run_cmd(f"java -Xmx4g -jar {SCRIPT_DIR}/ic3-0.2.0/ic3-0.2.0-full.jar " +
+        f"-input {INPUT_CLASSES} -threadcount 4 " +
+        f"-apkormanifest {APK} -cp {ANDROID_JAR} -protobuf {IC3_OUTPUT_DIR}")
 
-run_cmd(f"mkdir -p {IC3_OUTPUT_DIR}")
-run_cmd(f"java -jar {SCRIPT_DIR}/ic3-0.2.0/ic3-0.2.0-full.jar " +
-    f"-input {INPUT_CLASSES} " +
-    f"-apkormanifest {APK} -cp {ANDROID_JAR} -protobuf {IC3_OUTPUT_DIR}")
-
+IC3_OUTPUT = glob.glob(OUTPUT_PATTERN)
+assert len(IC3_OUTPUT) == 1
+IC3_OUTPUT = IC3_OUTPUT[0]
 os.system("cp " + IC3_OUTPUT + " " + PROTOBUF_OUT)
