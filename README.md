@@ -66,3 +66,15 @@ adb pull <target-apk-path> <apk-output>
 ```
 adb install path/to/apk
 ```
+
+## Retargeting Dex to Java Classes
+
+Build the Docker image with `make` first.
+
+Make sure your APK file (not symbolic link) is under `apks` in this directory.
+
+```
+./dare.py apks/example.apk
+```
+
+Then you can find outputs in `output/dare/`
