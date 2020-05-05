@@ -80,6 +80,8 @@ Then you can find (Java classes) outputs in `output/dare/`
 
 ## Inter-Component Communication (ICC) analysis
 
+NOTE: this depends on "Dare" introduced above
+
 Make sure your APK file (symbolic link or anything) is under `apks` in this directory.
 
 ```

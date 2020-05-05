@@ -18,6 +18,7 @@ def run_cmd(cmd):
     print(cmd)
     os.system(cmd)
 
+run_cmd(f"./dare.py {APK}")
 run_cmd(f"mkdir -p {IC3_OUTPUT}/{APKNAME}")
 run_cmd(f"java -jar {SCRIPT_DIR}/ic3-0.2.0/ic3-0.2.0-full.jar " +
     f"-input {OUTPUT}/dare/results/retargeted/{APKNAME_NO_SUFFIX}/ " +
