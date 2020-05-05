@@ -85,7 +85,7 @@ Also, you should set env var `ANDROID_SDK` to the Android SDK directory, such th
 the tool can find `$ANDROID_SDK/platforms/android-23/android.jar`.
 
 ```
-path/to/ic3.py <sha256sum> <apk-package-name> path/to/example.apk path/to/output.txt
+path/to/ic3.py path/to/example.apk <sha256sum> <apk-package-name> path/to/dare/classes path/to/output.txt
 ```
 
 Then you can find (text-format Protobuf) output at `path/to/output.txt`

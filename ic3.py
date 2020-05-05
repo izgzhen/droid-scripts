@@ -13,7 +13,8 @@ APK = SCRIPT_DIR + "/apks/" + os.path.basename(APK)
 APK_NAME = os.path.basename(APK).replace(".apk", "")
 SHA256SUM = sys.argv[2]
 PKG_NAME = sys.argv[3]
-PROTOBUF_OUT = sys.argv[4]
+INPUT_CLASSES = os.path.realpath(sys.argv[4])
+PROTOBUF_OUT = sys.argv[5]
 
 ANDROID_SDK = os.getenv("ANDROID_SDK")
 ANDROID_JAR = ANDROID_SDK + "/platforms/android-23/android.jar"
@@ -32,10 +33,7 @@ if os.path.exists(IC3_OUTPUT):
     exit(0)
 
 os.chdir(SCRIPT_DIR)
-INPUT_CLASSES = f"{OUTPUT}/dare/{SHA256SUM}/retargeted/{APK_NAME}/"
 
-if not os.path.isdir(INPUT_CLASSES):
-    run_cmd(f"./dare.py {APK} {SHA256SUM}")
 run_cmd(f"mkdir -p {IC3_OUTPUT_DIR}")
 run_cmd(f"java -jar {SCRIPT_DIR}/ic3-0.2.0/ic3-0.2.0-full.jar " +
     f"-input {INPUT_CLASSES} " +
