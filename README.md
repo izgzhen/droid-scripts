@@ -10,6 +10,23 @@ Android SDK tools' executables e.g. `adb` (inside `path/to/sdk/platform-tools`),
 NOTE: Install build tools
 `path/to/sdk/tools/bin/sdkmanager 'build-tools;29.0.3'`
 
+## Launch app on connected device
+
+Depends on python3 and `msbase` package.
+
+```
+./launch-apk.py launch path/to/apk
+```
+
+NOTE: this python script also supports printing the application label
+and package of an apk:
+
+```
+./launch-apk.py label path/to/apk
+./launch-apk.py package path/to/apk
+```
+
+
 ## Make an APK debuggable
 - `python debug-sign.py <input-apk-path> <output-apk-path>`
 
