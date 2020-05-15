@@ -106,3 +106,8 @@ path/to/ic3.py path/to/example.apk <sha256sum> <apk-package-name> path/to/dare/c
 ```
 
 Then you can find (text-format Protobuf) output at `path/to/output.txt`
+
+
+## Related work
+
+- https://github.com/strazzere/android-scripts
