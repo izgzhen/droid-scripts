@@ -111,3 +111,4 @@ Then you can find (text-format Protobuf) output at `path/to/output.txt`
 ## Related work
 
 - https://github.com/strazzere/android-scripts
+- adbshell.com
