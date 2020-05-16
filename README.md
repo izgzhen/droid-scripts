@@ -107,6 +107,11 @@ path/to/ic3.py path/to/example.apk <sha256sum> <apk-package-name> path/to/dare/c
 
 Then you can find (text-format Protobuf) output at `path/to/output.txt`
 
+## Getting name of current activity
+
+```
+adb shell dumpsys activity
+```
 
 ## Related work
 
