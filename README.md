@@ -117,3 +117,4 @@ adb shell dumpsys activity
 
 - https://github.com/strazzere/android-scripts
 - adbshell.com
+- [Reverse engineering and penetration testing on Android apps: my own list of tools](https://www.andreafortuna.org/2019/07/18/reverse-engineering-and-penetration-testing-on-android-apps-my-own-list-of-tools/)
