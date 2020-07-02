@@ -7,10 +7,6 @@ import glob
 SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 
 APK = os.path.realpath(sys.argv[1])
-
-os.system("cp " + APK + " " + SCRIPT_DIR + "/apks")
-APK = SCRIPT_DIR + "/apks/" + os.path.basename(APK)
-
 APK_NAME = os.path.basename(APK).replace(".apk", "")
 SHA256SUM = sys.argv[2]
 PKG_NAME = sys.argv[3]
@@ -27,7 +23,7 @@ def run_cmd(cmd):
     print(cmd)
     assert os.system(cmd) == 0
 
-OUTPUT_PATTERN = IC3_OUTPUT_DIR + "/" + PKG_NAME + "*.txt"
+OUTPUT_PATTERN = IC3_OUTPUT_DIR + "/*.txt"
 
 if len(glob.glob(OUTPUT_PATTERN)) == 0:
     os.chdir(SCRIPT_DIR)
