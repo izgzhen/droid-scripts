@@ -1,6 +1,8 @@
 Droid Scripts
 =====
 
+中文版：https://github.com/izgzhen/droid-scripts/blob/master/README_Chinese.md
+
 Executable scripts for helping with Android related work.
 
 Most of them are either wrappers of existing third-party tool's released jars or
