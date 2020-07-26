@@ -19,6 +19,8 @@ APK = APK.replace("apks/", WORKDIR + "/apks/")
 PATH_LOGS = DARE_OUTPUT + "/logs"
 DARE_RESULTS = DARE_OUTPUT + "/" + SHA256SUM
 
+os.system("mkdir -p " + DARE_RESULTS)
+
 cmd = "docker run --rm --memory=1gb " + \
   f"-v {PWD}/output:{OUTPUT} " + \
   f"-v {PWD}/apks:{WORKDIR}/apks " + \
@@ -26,7 +28,8 @@ cmd = "docker run --rm --memory=1gb " + \
   f'"mkdir -p {PATH_LOGS}; ./dare/dare -d {DARE_RESULTS} {APK} > {PATH_LOGS}/{APKNAME}-dare.txt"'
 
 print(cmd)
-os.system(cmd)
+assert os.system(cmd) == 0, \
+  "Have you built the container by running `make`?"
 
 import getpass
 

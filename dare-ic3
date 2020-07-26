@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+set -x
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+SHA256SUM=$(sha256sum $1)
+cp $1 $DIR/apks/example.apk
+
+./dare.py $DIR/apks/example.apk $SHA256SUM
