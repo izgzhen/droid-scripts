@@ -48,7 +48,7 @@ apktool d path/to/apk -o path/to/output/dir
 
 Version: 2.4.1, from https://ibotpeaches.github.io/Apktool/
 
-## Dump classes list
+## Dump classes list and basic stats of top-level namespace
 
 ```
 pkg-classes path/to/apk path/to/txt

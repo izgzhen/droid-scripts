@@ -11,10 +11,6 @@ def run(cmd):
 APK = sys.argv[1]
 OUT_TXT = sys.argv[2]
 
-if os.path.exists(OUT_TXT):
-    print("Exists " + OUT_TXT)
-    exit(0)
-
 tmp_dir = tempfile.TemporaryDirectory().name
 
 run(f"./apktool d -f {APK} -o {tmp_dir}")
@@ -33,3 +29,12 @@ with open(OUT_TXT, "w") as outfile:
     outfile.write("\n".join(classes))
 
 os.system(f"rm -rf {tmp_dir}")
+
+from collections import Counter
+
+class_toplevel_counter = Counter()
+for c in classes:
+    class_toplevel_counter[".".join(c.split(".", 2)[:2])] += 1
+
+for k, v in class_toplevel_counter.most_common():
+    print(k, v)
